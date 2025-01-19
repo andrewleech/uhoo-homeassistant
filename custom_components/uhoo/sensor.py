@@ -3,8 +3,8 @@
 from pyuhoo.device import Device
 
 from custom_components.uhoo import UhooDataUpdateCoordinator
-from homeassistant.components.sensor import STATE_CLASS_MEASUREMENT, SensorEntity
-from homeassistant.core import HomeAssistant, UnitOfTemperature
+from homeassistant.components.sensor import SensorStateClass, SensorEntity
+from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.typing import ConfigType
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
@@ -91,7 +91,7 @@ class UhooSensorEntity(CoordinatorEntity, SensorEntity):
     @property
     def state_class(self) -> str:
         """Return the state class of this entity, from STATE_CLASSES, if any."""
-        return str(STATE_CLASS_MEASUREMENT)
+        return str(SensorStateClass.MEASUREMENT)
 
     @property
     def icon(self) -> str:

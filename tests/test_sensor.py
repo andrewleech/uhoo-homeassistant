@@ -18,7 +18,7 @@ from custom_components.uhoo.const import (  # noqa:F401
     ATTR_LABEL,
     SENSOR_TYPES,
 )
-from homeassistant.components.sensor import ATTR_STATE_CLASS, STATE_CLASS_MEASUREMENT
+from homeassistant.components.sensor import ATTR_STATE_CLASS, SensorStateClass
 from homeassistant.const import (
     ATTR_DEVICE_CLASS,
     ATTR_ICON,
@@ -56,7 +56,7 @@ def assert_expected_properties(
     assert state.state == f"{str(MOCK_DEVICE_DATA[sensor_type]['value'])}"
 
     # Attributes
-    assert state.attributes.get(ATTR_STATE_CLASS) == STATE_CLASS_MEASUREMENT
+    assert state.attributes.get(ATTR_STATE_CLASS) == SensorStateClass.MEASUREMENT
     assert state.attributes.get(ATTR_ICON) == SENSOR_TYPES[sensor_type][ATTR_ICON]
     assert (
         state.attributes.get(ATTR_UNIT_OF_MEASUREMENT)
