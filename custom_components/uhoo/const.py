@@ -8,15 +8,12 @@ from homeassistant.const import (  # noqa:F401
     CONCENTRATION_MICROGRAMS_PER_CUBIC_METER,
     CONCENTRATION_PARTS_PER_BILLION,
     CONCENTRATION_PARTS_PER_MILLION,
-    DEVICE_CLASS_CO,
-    DEVICE_CLASS_CO2,
-    DEVICE_CLASS_HUMIDITY,
-    DEVICE_CLASS_PRESSURE,
-    DEVICE_CLASS_TEMPERATURE,
+    UnitOfPressure,
+    UnitOfTemperature,
     PERCENTAGE,
-    PRESSURE_HPA,
-    TEMP_CELSIUS,
-    TEMP_FAHRENHEIT,
+)
+from homeassistant.components.sensor import (
+    SensorDeviceClass,
 )
 
 # Base component constants
@@ -51,14 +48,14 @@ UPDATE_INTERVAL = timedelta(seconds=60)
 
 SENSOR_TYPES = {
     API_CO: {
-        ATTR_DEVICE_CLASS: DEVICE_CLASS_CO,
+        ATTR_DEVICE_CLASS: SensorDeviceClass.CO,
         ATTR_ICON: "mdi:molecule-co",
         ATTR_UNIT_OF_MEASUREMENT: CONCENTRATION_PARTS_PER_MILLION,
         ATTR_LABEL: "Carbon monoxide",
         ATTR_UNIQUE_ID: API_CO,
     },
     API_CO2: {
-        ATTR_DEVICE_CLASS: DEVICE_CLASS_CO2,
+        ATTR_DEVICE_CLASS: SensorDeviceClass.CO2,
         ATTR_ICON: "mdi:molecule-co2",
         ATTR_UNIT_OF_MEASUREMENT: CONCENTRATION_PARTS_PER_MILLION,
         ATTR_LABEL: "Carbon dioxide",
@@ -72,7 +69,7 @@ SENSOR_TYPES = {
         ATTR_UNIQUE_ID: API_DUST,
     },
     API_HUMIDITY: {
-        ATTR_DEVICE_CLASS: DEVICE_CLASS_HUMIDITY,
+        ATTR_DEVICE_CLASS: SensorDeviceClass.HUMIDITY,
         ATTR_ICON: "mdi:water-percent",
         ATTR_UNIT_OF_MEASUREMENT: PERCENTAGE,
         ATTR_LABEL: "Humidity",
@@ -93,16 +90,16 @@ SENSOR_TYPES = {
         ATTR_UNIQUE_ID: API_OZONE,
     },
     API_PRESSURE: {
-        ATTR_DEVICE_CLASS: DEVICE_CLASS_PRESSURE,
+        ATTR_DEVICE_CLASS: SensorDeviceClass.PRESSURE,
         ATTR_ICON: "mdi:gauge",
-        ATTR_UNIT_OF_MEASUREMENT: PRESSURE_HPA,
+        ATTR_UNIT_OF_MEASUREMENT: UnitOfPressure.HPA,
         ATTR_LABEL: "Air pressure",
         ATTR_UNIQUE_ID: API_PRESSURE,
     },
     API_TEMP: {
-        ATTR_DEVICE_CLASS: DEVICE_CLASS_TEMPERATURE,
+        ATTR_DEVICE_CLASS: SensorDeviceClass.TEMPERATURE,
         ATTR_ICON: "mdi:thermometer",
-        ATTR_UNIT_OF_MEASUREMENT: TEMP_FAHRENHEIT,
+        ATTR_UNIT_OF_MEASUREMENT: UnitOfTemperature.FAHRENHEIT,
         ATTR_LABEL: "Temperature",
         ATTR_UNIQUE_ID: API_TEMP,
     },
